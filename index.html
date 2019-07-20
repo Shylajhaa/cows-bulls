@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript" src="index.js">
+        </script>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+    <body>
+        <div id="level-selector">
+            <input type="radio" name="level" id="l1">L1<br>
+            <input type="radio" name="level" id="l2">L2<br>
+            <input type="radio" name="level" id="l3">L3<br>
+
+            <input type="button" value="Play" onclick="startGame()">
+        </div>
+        <div id="guess-number">
+            Guess the number: <input type="text" name="guess" id="input-number" required><br><br>
+            <input type="submit" value="Guess" id="number" onclick="guessNumber()"><br>
+            <p id="cows-bulls">Your Result:</p>
+            <input type="button" value="Switch Level" id="switch-level" onclick="switchLevel()">
+        </div>
+    </body>
+</html>
