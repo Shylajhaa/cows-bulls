@@ -1,22 +1,40 @@
-<html>
+<!DOCTYPE html>
     <head>
         <script type="text/javascript" src="index.js">
         </script>
         <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     </head>
     <body>
-        <div id="level-selector">
-            <input type="radio" name="level" id="l1">L1<br>
-            <input type="radio" name="level" id="l2">L2<br>
-            <input type="radio" name="level" id="l3">L3<br>
-
-            <input type="button" value="Play" onclick="startGame()">
+        <div class="container" id="cows-bulls-logo" style="width: 30%; height: 30%; margin-top: 5%; margin-left: 32%">
+            <img id="logo-btn" src="assets/cows-bulls-logo.jpeg" onclick="switchLevel()" class="img-rounded-12">
         </div>
-        <div id="guess-number">
-            Guess the number: <input type="text" name="guess" id="input-number" required><br><br>
-            <input type="submit" value="Guess" id="number" onclick="guessNumber()"><br>
-            <p id="cows-bulls">Your Result:</p>
-            <input type="button" value="Switch Level" id="switch-level" onclick="switchLevel()">
+        <div class="container" id="level-selector-btns">
+            <div class="container" id="level-selector">
+                <button type="button" id="l1" class="btn-lg btn-12 btn-success btn-width-150" onclick="startGame(1)"><span class="black-txt">Easy</span></button><br><br>
+                <button type="button" id="l2" class="btn-lg btn-12 btn-warning btn-width-150" onclick="startGame(2)"><span class="black-txt">Medium</span></button><br><br>
+                <button type="button" id="l3" class="btn-lg btn-12 btn-danger btn-width-150" onclick="startGame(3)"><span class="black-txt">Hard</span></button><br><br>
+            </div>
+        </div>
+        <div class="container" id="guess-number" style="margin-top: 5%; margin-left: 42%">
+            <div class="form-group btn-width-150">
+                <input type="text" name="guess" class="form-control" rows="10" id="input-number" onkeypress="allowNumbersOnly(event)"><br><br>
+                <button type="button" id="number" class="btn-sm btn-12 btn-info btn-width-100" style="margin-left: 15%" onclick="guessNumber()"><span class="black-txt">Guess</span></button><br><br>
+            </div>
+        </div>
+        <div class="container" id="congratulations" style="margin-top: 5%; margin-left: 37%">
+            <p id="result-text">Congratulations you found the number</p>
+        </div>
+        <div class="container text-centre" id="result">
+            <table class="table table-bordered table-striped" style="margin: auto">
+                <thead>
+                    <th><span>No.</span></th>
+                    <th><span>Guess</span></th>
+                    <th><span>Result</span></th>
+                </thead>
+                <tbody id="result-table">
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
