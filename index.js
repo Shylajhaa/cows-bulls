@@ -36,7 +36,7 @@ function startGame(levelInput) {
     guesser.style.display =  "block";
 
     var result = document.getElementById('result');
-    result.style.display =  "block";
+    result.style.display =  "none";
 
     var congratulations = document.getElementById('congratulations');
     congratulations.style.display =  "none";
@@ -58,7 +58,10 @@ function startGame(levelInput) {
 }
 
 function guessNumber() {
-    attempt ++;
+    var result = document.getElementById('result');
+    result.style.display =  "block";
+
+    attempt++;
     var inputNumber = document.getElementById('input-number').value;
 
     if (!validateInputNumber(level, inputNumber)) {
@@ -161,9 +164,6 @@ function validateInputNumber(level, inputNumber) {
 function showResultScreen(attempts){
     var guesser = document.getElementById('guess-number');
     guesser.style.display =  "none";
-
-    // var result = document.getElementById('result');
-    // result.style.display =  "none";
     
     var victoryBlock = document.getElementById('result-text');
     victoryBlock.innerHTML = victoryBlock.innerHTML + " in " + attempts + " attempts";
