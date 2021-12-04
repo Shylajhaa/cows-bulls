@@ -1,5 +1,6 @@
+import { addToLocalStorage } from "./helpers/storage-helper";
+
 var randomNumber;
-var level;
 var attempt;
 
 function allowNumbersOnly(e) {
@@ -9,7 +10,7 @@ function allowNumbersOnly(e) {
     }
 }
 
-function validRandomNumber(num) {
+function validRandomNumber(num, level) {
     lowerLimit = Math.pow(10, (level + 1));
     upperLimit = Math.pow(10, (level + 2)) - 1;
 
@@ -20,53 +21,59 @@ function validRandomNumber(num) {
     return true;
 }
 
-function findNumber() {
+function findNumber(level) {
     randomValue = (Math.floor(Math.random() * Math.pow(10, (level + 2)))).toString();
-    if (!validRandomNumber(parseInt(randomValue))) {
-        findNumber();
+    if (!validRandomNumber(parseInt(randomValue, level))) {
+        findNumber(level);
     }
 
     return randomValue;
 }
 
-function startGame(levelInput) {
-    attempt = 0;
-    level = levelInput;
-    var guesser = document.getElementById('guess-number');
-    guesser.style.display =  "block";
-
-    var result = document.getElementById('result');
-    result.style.display =  "none";
-
-    var congratulations = document.getElementById('congratulations');
-    congratulations.style.display =  "none";
-
-    var levelSelector = document.getElementById('level-selector-btns');
-    levelSelector.style.display = "none";
-
-    var cowsBullsLogo = document.getElementById('cows-bulls-logo');
-    cowsBullsLogo.style.height = "10%";
-    cowsBullsLogo.style.width = "10%";
-
-    var guessInput = document.getElementById('input-number');
+function initialise() {
+    var guessInput = document.getElementById('number');
+    var level = localStorage.getItem("level")
     guessInput.value =  "";
     guessInput.setAttribute("maxlength", (level + 2));
     guessInput.setAttribute("minlength", (level + 2));
 
-    randomNumber = findNumber();
+    randomNumber = findNumber(level);
     localStorage.setItem("randomNumber", randomNumber);
 }
 
-function guessNumber() {
-    var result = document.getElementById('result');
-    result.style.display =  "block";
+function startGame(levelInput) {
+    attempt = 0;
+    addToLocalStorage("level", levelInput);
+    // var guesser = document.getElementById('guess-number');
+    // guesser.style.display =  "block";
 
-    attempt++;
-    var inputNumber = document.getElementById('input-number').value;
+    // var result = document.getElementById('result');
+    // result.style.display =  "none";
+
+    // var congratulations = document.getElementById('congratulations');
+    // congratulations.style.display =  "none";
+
+    // var levelSelector = document.getElementById('level-selector-btns');
+    // levelSelector.style.display = "none";
+
+    // var cowsBullsLogo = document.getElementById('cows-bulls-logo');
+    // cowsBullsLogo.style.height = "10%";
+    // cowsBullsLogo.style.width = "10%";
+
+    location.href = "./game.html";
+}
+
+function guessNumber() {
+    // var result = document.getElementById('result');
+    // result.style.display =  "block";
+
+    var inputNumber = document.getElementById('number').value;
+    var level = localStorage.getItem("level")
 
     if (!validateInputNumber(level, inputNumber)) {
         return;
     }
+    attempt++;
     var cows = 0;
     var bulls = 0;
 
@@ -87,7 +94,6 @@ function guessNumber() {
                 indexMap[numIndex] = "B";
             }
         }
-
     }
 
     if (cows == inputNumber.length) {

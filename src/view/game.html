@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <head>
+        <script type="text/javascript" src="index.js">
+        </script>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body onload="initialise()">
+        <div class="container-fluid d-flex justify-content-center" style="margin-top: 5%;">
+            <div class="flex-column">
+                <div class="flex-row" id="cows-bulls-logo">
+                    <img id="logo-btn" src="assets/cows-bulls-logo.jpeg" onclick="switchLevel()" class="img-rounded-10">
+                </div>
+                
+                <div class="container-fluid d-flex justify-content-center">
+                    <div class="flex-column" id="guess-number" style="margin-top: 5%;">
+                        <!-- <div class="form-group btn-width-150"> -->
+                            <div class="flex-row">
+                                <input type="text" name="guess" class="form-control" rows="10" id="input-number" onkeypress="allowNumbersOnly(event)">
+                            </div>
+                            <div class="flex-row d-flex justify-content-center" style="margin-top: 5%;">
+                                    <button type="button" id="number" class="btn-sm btn-info level-btn" onclick="guessNumber()">
+                                        <span class="black-txt">Guess</span>
+                                    </button>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

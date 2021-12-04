@@ -1,0 +1,63 @@
+/* #guess-number,
+#level-switcher,
+#congratulations,
+#result {
+  display: none;
+}
+
+#result {
+  display: none;
+} */
+
+/* #level-selector,
+#guess-number,
+#level-selector-btns {
+  width: 100px;
+
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  margin-top: 5%;
+  margin-left: 39%;
+} */
+
+/* .btn-12 {
+  border-radius: 12px;
+} */
+
+.black-txt {
+  color: black;
+}
+
+.img-rounded-10 {
+  border-radius: 10%;
+}
+
+/* .btn-width-150 {
+  width: 150px;
+}
+
+.btn-width-100 {
+  width: 100px;
+} */
+
+/* .btn-8 {
+  border-radius: 12px;
+} */
+
+/* #input-number {
+  size: 30;
+} */
+
+button,
+img {
+  cursor: pointer;
+}
+/* btn-lg btn-12 btn-success btn-width-100 */
+
+.level-btn {
+  border-radius: 12px;
+  width: 100px;
+}

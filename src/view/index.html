@@ -1,12 +1,13 @@
 <!DOCTYPE html>
     <head>
-        <script type="text/javascript" src="index.js">
+        <script type="text/javascript" src="/src/js/index.js">
         </script>
         <link rel="stylesheet" type="text/css" href="index.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div class="container" id="cows-bulls-logo" style="width: 30%; height: 30%; margin-top: 5%; margin-left: 32%">
+        <!-- <div class="container-fluid" id="cows-bulls-logo" style="width: 30%; height: 30%; margin: 5%;">
             <img id="logo-btn" src="assets/cows-bulls-logo.jpeg" onclick="switchLevel()" class="img-rounded-12">
         </div>
         <div class="container" id="level-selector-btns">
@@ -35,6 +36,38 @@
                 <tbody id="result-table">
                 </tbody>
             </table>
+        </div> -->
+        <div class="container-fluid d-flex justify-content-center" style="margin-top: 5%;">
+            <div class="flex-column">
+                <div class="flex-row" id="cows-bulls-logo">
+                    <img id="logo-btn" src="/assets/cows-bulls-logo.jpeg" onclick="switchLevel()" class="img-rounded-10">
+                </div>  
+                
+                <div class="container-fluid d-flex justify-content-center">
+                    <div class="flex-column" id="level-selector-btns" style="margin-top: 5%;">
+                        
+                        <div class="flex-row">
+                            <button type="button" id="l1" class="btn-lg btn-success level-btn" onclick="startGame(1)">
+                                <span class="black-txt d-flex justify-content-center">Easy</span>
+                            </button>
+                        </div>
+
+                        <div class="flex-row" style="margin-top: 10%;">
+                            <button type="button" id="l2" class="btn-lg btn-warning level-btn" onclick="startGame(2)">
+                                <span class="black-txt d-flex justify-content-center">Medium</span>
+                            </button>
+                        </div>
+                        
+                        <div class="flex-row" style="margin-top: 10%;">
+                            <button type="button" id="l3" class="btn-lg btn-danger level-btn" onclick="startGame(3)">
+                                <span class="black-txt d-flex justify-content-center">Hard</span>
+                            </button>
+                        </div>
+                    
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </body>
 </html>
