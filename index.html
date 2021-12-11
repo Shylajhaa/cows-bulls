@@ -3,38 +3,12 @@
         <script type="module" src="src/js/index.js"></script>
         <link rel="stylesheet" type="text/css" href="src/view/main.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <link rel="shortcut icon" href="/src/view/assets/cows-bulls-logo.jpeg" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body>
-        <!-- <div class="container-fluid" id="cows-bulls-logo" style="width: 30%; height: 30%; margin: 5%;">
-            <img id="logo-btn" src="assets/cows-bulls-logo.jpeg" onclick="switchLevel()" class="img-rounded-12">
-        </div>
-        <div class="container" id="level-selector-btns">
-            <div class="container" id="level-selector">
-                <button type="button" id="l1" class="btn-lg btn-12 btn-success btn-width-150" onclick="startGame(1)"><span class="black-txt">Easy</span></button><br><br>
-                <button type="button" id="l2" class="btn-lg btn-12 btn-warning btn-width-150" onclick="startGame(2)"><span class="black-txt">Medium</span></button><br><br>
-                <button type="button" id="l3" class="btn-lg btn-12 btn-danger btn-width-150" onclick="startGame(3)"><span class="black-txt">Hard</span></button><br><br>
-            </div>
-        </div>
-        <div class="container" id="guess-number" style="margin-top: 5%; margin-left: 42%">
-            <div class="form-group btn-width-150">
-                <input type="text" name="guess" class="form-control" rows="10" id="input-number" onkeypress="allowNumbersOnly(event)"><br><br>
-                <button type="button" id="number" class="btn-sm btn-12 btn-info btn-width-100" style="margin-left: 15%" onclick="guessNumber()"><span class="black-txt">Guess</span></button><br><br>
-            </div>
-        </div>
-        <div class="container" id="congratulations" style="margin-top: 5%; margin-left: 37%">
+    <body style="background-color: bisque;">
+        <!-- <div class="container" id="congratulations" style="margin-top: 5%; margin-left: 37%">
             <p id="result-text" style="color: red"></p>Congratulations you found the number</p>
-        </div>
-        <div class="container text-centre" id="result">
-            <table class="table table-bordered table-striped" style="margin: auto">
-                <thead>
-                    <th><span>No.</span></th>
-                    <th><span>Guess</span></th>
-                    <th><span>Result</span></th>
-                </thead>
-                <tbody id="result-table">
-                </tbody>
-            </table>
         </div> -->
         <div class="container-fluid d-flex justify-content-center" style="margin-top: 5%;">
             <div class="flex-column">
@@ -46,19 +20,19 @@
                     <div class="flex-column" id="level-selector-btns" style="margin-top: 5%;">
                         
                         <div class="flex-row">
-                            <button type="button" id="l1" class="btn-lg btn-success level-btn" onclick="startGame(1)">
+                            <button type="button" id="l1" class="btn-lg btn-success level-btn">
                                 <span class="black-txt d-flex justify-content-center">Easy</span>
                             </button>
                         </div>
 
                         <div class="flex-row" style="margin-top: 10%;">
-                            <button type="button" id="l2" class="btn-lg btn-warning level-btn" onclick="startGame(2)">
+                            <button type="button" id="l2" class="btn-lg btn-warning level-btn">
                                 <span class="black-txt d-flex justify-content-center">Medium</span>
                             </button>
                         </div>
                         
                         <div class="flex-row" style="margin-top: 10%;">
-                            <button type="button" id="l3" class="btn-lg btn-danger level-btn" onclick="startGame(3)">
+                            <button type="button" id="l3" class="btn-lg btn-danger level-btn">
                                 <span class="black-txt d-flex justify-content-center">Hard</span>
                             </button>
                         </div>

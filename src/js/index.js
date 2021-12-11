@@ -1,8 +1,9 @@
+import { findNumber, startLevel1, startLevel2, startLevel3 } from "./core/game-init.js";
+import { allowNumbersOnly } from "./helpers/input-helper.js";
 import { addToLocalStorage } from "./helpers/storage-helper.js";
 import { fetchLocalStorage } from "./helpers/storage-helper.js";
 
-var attempt;
-
+// add all listeners
 document.getElementById('l1')?.addEventListener('click', startLevel1);
 document.getElementById('l2')?.addEventListener('click', startLevel2);
 document.getElementById('l3')?.addEventListener('click', startLevel3);
@@ -13,33 +14,6 @@ if (window.location.href.match('game.html') != null) {
     window.addEventListener('load', initialise());
 }
 
-function allowNumbersOnly(e) {
-    var code = (e.which) ? e.which : e.keyCode;
-    if (code > 31 && (code < 48 || code > 57)) {
-        e.preventDefault();
-    }
-}
-
-function validRandomNumber(num, level) {
-    const lowerLimit = Math.pow(10, (level + 1));
-    const upperLimit = Math.pow(10, (level + 2)) - 1;
-
-    if (num < lowerLimit || num > upperLimit) {
-        return false;
-    }
-
-    return true;
-}
-
-function findNumber(level) {
-    const randomValue = (Math.floor(Math.random() * Math.pow(10, (level + 2)))).toString();
-    if (!validRandomNumber(parseInt(randomValue, level))) {
-        findNumber(level);
-    }
-
-    return randomValue;
-}
-
 function initialise() {
     // var guessInput = document.getElementById('number');
     // guessInput.value =  "";
@@ -48,57 +22,23 @@ function initialise() {
 
     var level = fetchLocalStorage("level", "int");
     addToLocalStorage("randomNumber", findNumber(level));
-}
-
-function startLevel1() {
-    startGame(1);
-}
-
-function startLevel2() {
-    startGame(2);
-}
-
-function startLevel3() {
-    startGame(3);
-}
-
-function startGame(levelInput) {
-    attempt = 0;
-    addToLocalStorage("level", levelInput);
-    // var guesser = document.getElementById('guess-number');
-    // guesser.style.display =  "block";
-
-    // var result = document.getElementById('result');
-    // result.style.display =  "none";
-
-    // var congratulations = document.getElementById('congratulations');
-    // congratulations.style.display =  "none";
-
-    // var levelSelector = document.getElementById('level-selector-btns');
-    // levelSelector.style.display = "none";
-
-    // var cowsBullsLogo = document.getElementById('cows-bulls-logo');
-    // cowsBullsLogo.style.height = "10%";
-    // cowsBullsLogo.style.width = "10%";
-
-    location.href = "src/view/game.html";
+    document.getElementById('input-number').placeholder = "Enter a " + (level + 2) + " digit number";
 }
 
 function guessNumber() {
-    // var result = document.getElementById('result');
-    // result.style.display =  "block";
-
     var inputNumber = document.getElementById('input-number').value;
     var level = fetchLocalStorage("level", "int");
 
     if (!validateInputNumber(level, inputNumber)) {
         return;
     }
+
     attempt++;
     var cows = 0;
     var bulls = 0;
 
-    indexMap = createIndexMap(randomNumber);
+    const randomNumber = fetchLocalStorage("randomNumber");
+    const indexMap = createIndexMap(randomNumber);
 
     for (var i=0; i < inputNumber.length; i++) {
         if (inputNumber[i] == randomNumber[i]) {
@@ -108,7 +48,7 @@ function guessNumber() {
             }
             indexMap[i] = "C";
         } else {
-            numIndex = randomNumber.indexOf(inputNumber[i]);
+            const numIndex = randomNumber.indexOf(inputNumber[i]);
 
             if (numIndex >= 0 && indexMap[numIndex] == "N") {
                 bulls++;
@@ -162,7 +102,7 @@ function switchLevel() {
 
 function createIndexMap(randomNumber) {
     var indexMap = {};
-    for (i = 0;i < randomNumber.length; i++) {
+    for (var i = 0;i < randomNumber.length; i++) {
         indexMap[i] = "N";
     }
 
